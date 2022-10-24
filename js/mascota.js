@@ -1,5 +1,4 @@
 /* Variables Globales */
-
 const formVet = document.querySelector("#formMascotta")
 /* Eventos del DOM */
 const checkBoxBanio = document.querySelector("#checkBanio")
@@ -14,8 +13,10 @@ checkBoxVacuna.addEventListener("change",validaCheckBoxVacuna)
 const checkBoxConsulta = document.querySelector("#consultaMedica")
 checkBoxConsulta.addEventListener("change",validaCheckBoxConsulta)
 
+/* ARRAY DE DATOS DEL FORMULARIO */
 const formCheck = []
 
+/* VALIDACIONES DE CHECKBOX */
 function validaCheckBanio(){
     let isCheckedBanio = checkBoxBanio.checked
     if(isCheckedBanio){
@@ -65,30 +66,42 @@ function validaCheckBoxConsulta(){
         }
 }
 
+/* FUNCION DE MULTIPLICACION DE PRECIO * CANTIDAD */
+const totalPrecioFunction = (precio, cantidad) => {
+return (precio * cantidad)
+} 
 
-     const totalPrecioFunction = (precio, cantidad) => {
-        return (precio * cantidad)
-    } 
+/* FUNCTION PRINCIPAL PARA EL FORMULARIO */
+let form = document.querySelector('form')
+    form.addEventListener('submit', (evt) => {
+    evt.preventDefault()
+    const nombreCliente = document.querySelector("#clienteid").value
+    const nombreMascota = document.querySelector("#mascotaid").value
+    const formVet = new FormData(form)
+    const cantidad = parseInt(formVet.get('quantity'))
+    let sumaTotal = 0
+
+    formCheck.forEach(servicio => {
+            sumaTotal = sumaTotal+ servicio.precio
+    }); 
+    const preciototal = (totalPrecioFunction(sumaTotal,cantidad))
     
-    let form = document.querySelector('form')
-        form.addEventListener('submit', (evt) => {
-        evt.preventDefault()
-        const nombreCliente = document.querySelector("#clienteid").value
-        const formVet = new FormData(form)
-        const cantidad = parseInt(formVet.get('quantity'))
-        let sumaTotal = 0
-        formCheck.forEach(servicio => {
-             sumaTotal = sumaTotal+ servicio.precio
-        }); 
-        const preciototal = (totalPrecioFunction(sumaTotal,cantidad))
-        
-        /* Integración de Librería Js */
-        Swal.fire({
-            title: 'Muchas Gracias! ' + nombreCliente,
-            text: 'El total a pagar es: ' + preciototal,
-            icon: 'success',
-            confirmButtonText: 'Aceptar'
-        })
-
-        form.reset();
+    /* Integración de Librería Js */
+    Swal.fire({
+        title: 'Muchas Gracias! ' + nombreCliente,
+        text: 'El total a pagar es: ' + preciototal,
+        icon: 'success',
+        confirmButtonText: 'Aceptar'
     })
+
+    /* GUARDAR EN LOCAL STORAGE */
+    const dataStorage = {
+        cliente: nombreCliente,
+        mascota: nombreMascota,
+        servicios: formCheck,
+    }
+    localStorage.setItem("Values_Form", JSON.stringify (dataStorage))
+    
+    /* RESETEO DE CAMPOS DEL FORMULARIO */
+    form.reset();
+})

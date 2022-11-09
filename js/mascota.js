@@ -71,12 +71,28 @@ const totalPrecioFunction = (precio, cantidad) => {
 return (precio * cantidad)
 } 
 
+    /* CONSULTA DE ARCHIVO JSON CON FETCH */
+    fetch('../data/data.json')
+    .then((response)=> {return response.json() })
+    .then((datos)=> {
+        let opcionesRaza = ''
+        datos.forEach((raza) =>{
+            opcionesRaza += `<option value="${raza.nombre}">${raza.nombre}</option>`
+        })
+        document.querySelector("#nombreRaza").innerHTML = opcionesRaza
+    })
+    .catch((error)=>{
+        console.log(error)
+    })
+
+
 /* FUNCTION PRINCIPAL PARA EL FORMULARIO */
 let form = document.querySelector('form')
     form.addEventListener('submit', (evt) => {
     evt.preventDefault()
     const nombreCliente = document.querySelector("#clienteid").value
     const nombreMascota = document.querySelector("#mascotaid").value
+    const razaMascota = document.querySelector("#nombreRaza").value
     const formVet = new FormData(form)
     const cantidad = parseInt(formVet.get('quantity'))
     let sumaTotal = 0
@@ -89,7 +105,7 @@ let form = document.querySelector('form')
     /* Integración de Librería Js */
     Swal.fire({
         title: 'Muchas Gracias! ' + nombreCliente,
-        text: 'El total a pagar es: ' + preciototal,
+        text: 'El total a pagar por su mascota ' + nombreMascota + ' de raza ' + razaMascota + ' es de: ' + preciototal,
         icon: 'success',
         confirmButtonText: 'Aceptar'
     })

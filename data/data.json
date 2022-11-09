@@ -1,0 +1,42 @@
+[
+    {
+        "id":"1",
+        "nombre":"Schnauzer"
+    },
+    {
+        "id":"2",
+        "nombre":"Pitbull"
+    },
+    {
+        "id":"3",
+        "nombre":"French Poddle"
+    },
+    {
+        "id":"4",
+        "nombre":"Rottweiler"
+    },
+    {
+        "id":"5",
+        "nombre":"Pastor Alemán"
+    },
+    {
+        "id":"6",
+        "nombre":"Pastor Belga"
+    },
+    {
+        "id":"7",
+        "nombre":"Golden Retriever"
+    },
+    {
+        "id":"8",
+        "nombre":"Dogo Argentino"
+    },
+    {
+        "id":"9",
+        "nombre":"Husky"
+    },
+    {
+        "id":"10",
+        "nombre":"Boxer"
+    }
+]

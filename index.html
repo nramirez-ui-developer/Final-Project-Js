@@ -14,7 +14,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.1/dist/sweetalert2.all.min.js"></script>
 </head>
 <body>
-    <!-- <h1>Segunda entrega del Proyecto Final</h1> -->
+    <!-- <h1>Entrega del Proyecto Final</h1> -->
 
     <main>
         <header>
@@ -45,10 +45,10 @@
         </header>
 
         <section>
-            <div class="container-fluid background">
+            <div class="container-fluid background justify-content-around">
                 <div class="main-cont">
                     <h1>Calcula Online</h1>
-                    <h5>Nuestros Servicios</h5>
+                    <h5 id="contenido">Nuestros Servicios</h5>
                 </div>
                 <div class="datos-container">
                     <div class="container-fluid top-simulador">
@@ -64,6 +64,11 @@
                                 <div class="mb-3">
                                     <label for="nombreMascota" class="form-label">Nombre de su Mascota</label>
                                     <input type="text" class="form-control" id="mascotaid" placeholder="Nombre de Mascota" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="nombreRaza" class="form-label">Tipo de raza</label>
+                                    <select class="form-select" aria-label="Default select example" id="nombreRaza">
+                                    </select>
                                 </div>
                                 <div class="mb-3">
                                     <p><label for="servicios" class="form-label">Seleccione los servicios:</label></p>
@@ -106,15 +111,6 @@
             </div>
         </section>
     </main>
-
-    <!-- <script>
-        Swal.fire({
-        title: 'Muchas Gracias!',
-        text: 'Do you want to continue',
-        icon: 'success',
-        confirmButtonText: 'Acetpar'
-        })
-    </script> -->
 
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
